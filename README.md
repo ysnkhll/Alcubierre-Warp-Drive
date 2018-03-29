@@ -18,10 +18,10 @@ with parameters R>0 and σ>0 Alcubierre's metric is written as,
 Alcubierre later derives an expression using the extrinsic curvature tensor K<sub>ij</sub> (9)
 showing the expansion (12) as
 
-θ = v<sub>s</sub> (<sup>x<sub>s</sub></sup> / r<sub>s</sub>)(<sup>df</sup> / dr<sub>s</sub>)
+θ = v<sub>s</sub> (<sup>x<sub>s</sub></sup> / r<sub>s</sub>)(<sup>d𝑓</sup> / dr<sub>s</sub>)
 
 ---
-In Python I defined the derivatives of r(s) & f(r<sub>s</sub>) as
+In Python I defined the derivatives of r(s) & 𝑓(r<sub>s</sub>) as
 ```python
 def d_rs(x, rho, xs=15):
     return ((x - xs)**2 + rho**2)**(1/2)
