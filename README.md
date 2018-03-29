@@ -11,7 +11,7 @@ in which
 
 ![equations](https://wikimedia.org/api/rest_v1/media/math/render/svg/a79c6cc361dd5feaff2c768d482263ce5f3c76c6)
 
-with parameters R>0 and σ>0 Alcubierre's metric is written as,
+with parameters R>0 and σ>0. Alcubierre's metric is then written as,
 
 ![metric](https://wikimedia.org/api/rest_v1/media/math/render/svg/34fc4fd0c1af54c827eafabc29cb44fa7341c948)
 
