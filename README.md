@@ -45,4 +45,4 @@ def theta(x, p, xs=15, s=8, R=1):
 * https://en.wikipedia.org/wiki/Alcubierre_drive
 
 ###### Yasin Khalil (www.yasinkhalil.com)
-2FC7 638E 1926 F27 (https://keybase.io/ysnkhll)
+###### 2FC7 638E 1926 F27 (https://keybase.io/ysnkhll)
