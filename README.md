@@ -45,4 +45,4 @@ def theta(x, p, xs=15, s=8, R=1):
 * Alcubierre, Miguel (1994). "The warp drive: hyper-fast travel within general relativity". Classical and Quantum Gravity. 11 (5): L73–L77. arXiv:[gr-qc/0009013](https://arxiv.org/abs/gr-qc/0009013) Freely accessible. Bibcode:[1994CQGra..11L..73A](http://adsabs.harvard.edu/abs/1994CQGra..11L..73A). doi:[10.1088/0264-9381/11/5/001](https://doi.org/10.1088%2F0264-9381%2F11%2F5%2F001).
 * https://en.wikipedia.org/wiki/Alcubierre_drive
 
-###### :neckbeard: [Yasin Khalil](http://www.yasinkhalil.com) Keybase: [2FC7 638E 1926 F27](https://keybase.io/ysnkhll)
+######  [Yasin Khalil](http://www.yasinkhalil.com) :neckbeard: Keybase: [2FC7 638E 1926 F27](https://keybase.io/ysnkhll)
