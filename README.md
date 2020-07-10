@@ -2,7 +2,6 @@
 A Python implmentation of Alcubierre's metric using Numpy and Matplotlib.
 
 ## Implementation:
-
 Alcubierre defines the following,
 
 ![vars](https://wikimedia.org/api/rest_v1/media/math/render/svg/59ae8beb08bae255e40962f098bd9ac6f042a3d6)
