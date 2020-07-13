@@ -1,5 +1,6 @@
 # Alcubierre-Warp-Drive :rocket:
 A Python implmentation of Alcubierre's metric using Numpy and Matplotlib.
+![Warp Image](https://github.com/ysnkhll/Alcubierre-Warp-Drive/blob/master/graph.png)
 
 ## Implementation:
 Alcubierre defines the following,
