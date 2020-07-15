@@ -13,65 +13,92 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
-## 
+##
 # Yasin Khalil (www.yasinkhalil.com)
 # 2FC7 638E 1926 F27 (https://keybase.io/ysnkhll)
-## 
-import math
+##
 
+import time
+import math
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
-from mpl_toolkits.mplot3d import Axes3D
 
 np.seterr(divide='ignore', invalid='ignore')
 mpl.rcParams['toolbar'] = 'None'
 
+
 def rho(y, z):
-    return np.sqrt(y**2 + z**2)
+	return np.sqrt(y**2 + z**2)
 
 
-def d_rs(x, rho, xs=15):
-    return ((x - xs)**2 + rho**2)**(1/2)
+def d_rs(x, rho, xs=2.5):
+	return ((x - xs)**2 + rho**2)**(1/2)
 
 
 def d_frs(rs, sigma=8, R=1):
-    a = sigma * (np.tanh((R + rs)*sigma)**2 - 1)
-    b = sigma * ((np.tanh(-(R - rs)*sigma)**2 - 1) / np.tanh(R * sigma))
-    return (-1/2) * (a - b)
+	a = sigma * (np.tanh((R + rs)*sigma)**2 - 1)
+	b = sigma * ((np.tanh(-(R - rs)*sigma)**2 - 1) / np.tanh(R * sigma))
+	return (-1/2) * (a - b)
 
 
-def theta(x, p, xs=15, s=8, R=1):
-    vs = R
-    drs = d_rs(x, p, xs)
-    dfrs = d_frs(drs, s, R)
+def theta(x, p, xs=2.5, s=8, R=1):
+	vs = R
+	drs = d_rs(x, p, xs)
+	dfrs = d_frs(drs, s, R)
 
-    return vs * ((x - xs) / drs) * dfrs
+	return vs * ((x - xs) / drs) * dfrs
 
-
-# Inputs vectors.
-x = np.linspace(1, 4, 500)
-p = np.linspace(-1.5, 1.5, 500)
-
-# Generate coordinate matrices from coordinate vectors.
-X, P = np.meshgrid(x, p)
-
-# Calculate the metric tensor.
-Z = theta(X, P, 2.5, 8, 1)
 
 # Create the Figure.
 fig = plt.figure(dpi=96)
 fig.canvas.set_window_title('Alcubierre Warp Drive')
 ax = fig.gca(projection='3d')
+ax.view_init(25, -45)
 
-# Plot the Surface.
-ax.plot_wireframe(X, P, Z)
-
-# Tweak the limits and add latex math labels.
-ax.set_zlim(0, 5)
+# Add latex math labels.
 ax.set_xlabel(r'$\phi_\mathrm{real}$')
 ax.set_ylabel(r'$\phi_\mathrm{im}$')
 ax.set_zlabel(r'$V(\phi)$')
 
-# Display the plot.
-plt.show()
+# Inputs vectors.
+x = np.linspace(1.0, 8.0, num=160)
+p = np.linspace(-4.0, 4.0, num=160)
+
+# Generate coordinate matrices from coordinate vectors.
+X, P = np.meshgrid(x, p)
+
+# Set the axis limits so they aren't recalculated each frame.
+ax.set_xlim(1.0, 8.0)
+ax.set_ylim(-4, 4)
+ax.set_zlim(-4.2, 4.2)
+
+# Begin plotting.
+frame = None
+csets = []
+for xs in np.linspace(1.0, 10.0, 200):
+
+	if frame:
+		ax.collections.remove(frame)
+
+	if csets:
+		for sets in csets:
+			if sets.collections:
+				for cols in sets.collections:
+					ax.collections.remove(cols)
+				csets.remove(sets)
+
+	# Calculate the metric tensor.
+	Z = theta(X, P, xs, 8, 1)
+
+	# Plot the Surface.
+	frame = ax.plot_wireframe(
+		X, P, Z, rstride=2, cstride=2, linewidth=0.5, antialiased=True)
+
+	# Plot projections of the contours for each dimension.
+	csets.append(ax.contour(X, P, Z, zdir='x', offset=1, cmap=plt.cm.coolwarm))
+	csets.append(ax.contour(X, P, Z, zdir='y', offset=4, cmap=plt.cm.coolwarm))
+	csets.append(ax.contour(X, P, Z, zdir='z', offset=-4.2, cmap=plt.cm.coolwarm))
+
+	# Wait
+	plt.pause(0.001)
