@@ -48,5 +48,6 @@ def theta(x, p, xs=15, s=8, R=1):
 ## Updates:
  - Added code to animate the graph.
  - Added contours for each axis.
+ - Crazyvoid 2024 (modified the script to work with latest version of python and libs)
  
 ###### [Yasin Khalil](http://www.yasinkhalil.com) :sunglasses: Keybase: [2FC7 638E 1926 F27](https://keybase.io/ysnkhll)
